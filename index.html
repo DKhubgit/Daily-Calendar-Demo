@@ -35,7 +35,7 @@
       
       <!-- 9:00am block -->
       <div class="row">
-        <div class="col hour">
+        <div class="col hour" data-currhour="9">
           9:00 am
         </div>
         <div class="col-8 description border border-dark">
@@ -47,7 +47,7 @@
       </div>
       <!-- 10:00am block -->
       <div class="row">
-        <div class="col hour">
+        <div class="col hour" data-currhour="10">
           10:00 am
         </div>
         <div class="col-8 description border border-dark">
@@ -59,7 +59,7 @@
       </div>
       <!-- 11:00am block -->
       <div class="row">
-        <div class="col hour">
+        <div class="col hour" data-currhour="11">
           11:00 am
         </div>
         <div class="col-8 description border border-dark">
@@ -71,7 +71,7 @@
       </div>
       <!-- 12:00am block -->
       <div class="row">
-        <div class="col hour">
+        <div class="col hour" data-currhour="12">
           12:00 am
         </div>
         <div class="col-8 description border border-dark">
@@ -84,7 +84,7 @@
 
       <!-- 1:00pm block -->
       <div class="row">
-        <div class="col hour">
+        <div class="col hour" data-currhour="13">
           1:00 pm
         </div>
         <div class="col-8 description border border-dark">
@@ -97,7 +97,7 @@
 
       <!-- 2:00pm block -->
       <div class="row">
-        <div class="col hour">
+        <div class="col hour" data-currhour="14">
           2:00 pm
         </div>
         <div class="col-8 description border border-dark">
@@ -110,7 +110,7 @@
 
       <!-- 3:00pm block -->
       <div class="row">
-        <div class="col hour">
+        <div class="col hour" data-currhour="15">
           3:00 pm
         </div>
         <div class="col-8 description border border-dark">
@@ -123,7 +123,7 @@
 
       <!-- 4:00pm block -->
       <div class="row">
-        <div class="col hour">
+        <div class="col hour" data-currhour="16">
           4:00 pm
         </div>
         <div class="col-8 description border border-dark">
@@ -135,8 +135,8 @@
       </div>
 
       <!-- 5:00pm block -->
-      <div class="row">
-        <div class="col hour">
+      <div class="row" id="last-block">
+        <div class="col hour" data-currhour="17">
           5:00 pm
         </div>
         <div class="col-8 description border border-dark">
@@ -155,13 +155,29 @@
 
     
     <script>
-      //displays real time
+      //displays date and real time in 24hour format
       $('#currentDay').attr('class', 'time');
+      var currentTime;
       var timerInterval = setInterval(function() {
       var currentDate = moment().format("MMMM Do, YYYY");
-      var currentTime = moment().format(" hh:mm:ss");
+      currentTime = moment().format(" HH:mm:ss");
       $('#currentDay').text(currentDate + currentTime);
       }, 1000)
+
+      //displays appropriate background color for each hour in the event column
+      //must refresh in order to update colors
+      for (var i = 0; i < $(".container").children().length; ++i){
+        var checkTime = moment().format("HH");
+        var thisHour = $(".container").children().eq(i).children().eq(0).data('currhour');
+        if ( checkTime > thisHour) {
+          $(".container").children().eq(i).children().eq(1).addClass('past');
+        } else if (checkTime == thisHour) {
+          $(".container").children().eq(i).children().eq(1).addClass('present');
+        } else {
+          $(".container").children().eq(i).children().eq(1).addClass('future');
+        }
+      }
+
     </script>
   </body>
 </html>
