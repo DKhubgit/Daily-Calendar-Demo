@@ -20,7 +20,12 @@ textarea{
   border-radius: 0;
   border-bottom: 10px solid black;
 }
+.time {
+  font-size: 30px;
+  font-weight: bold;
+}
 
+/* initial CSS given to as starter, add them as necessary */
 .description{
   white-space: pre-wrap;
 }

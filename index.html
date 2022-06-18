@@ -20,7 +20,7 @@
       href="https://fonts.googleapis.com/css?family=Open+Sans&display=swap"
       rel="stylesheet"
     />
-    <link rel="stylesheet" href="style.css" />
+    <link rel="stylesheet" href="./assets/style.css" />
     <title>Work Day Scheduler</title>
   </head>
 
@@ -32,21 +32,136 @@
     </header>
     <div class="container">
       <!-- Timeblocks go here -->
+      
+      <!-- 9:00am block -->
       <div class="row">
-        <div class="col border border-dark">
+        <div class="col hour">
           9:00 am
         </div>
-        <div class="col-8 border border-dark">
+        <div class="col-8 description border border-dark">
           (Event inputed by user)
         </div>
         <div class="col border border-dark">
           (save button here)
         </div>
       </div>
+      <!-- 10:00am block -->
+      <div class="row">
+        <div class="col hour">
+          10:00 am
+        </div>
+        <div class="col-8 description border border-dark">
+          (Event inputed by user)
+        </div>
+        <div class="col border border-dark">
+          (save button here)
+        </div>
+      </div>
+      <!-- 11:00am block -->
+      <div class="row">
+        <div class="col hour">
+          11:00 am
+        </div>
+        <div class="col-8 description border border-dark">
+          (Event inputed by user)
+        </div>
+        <div class="col border border-dark">
+          (save button here)
+        </div>
+      </div>
+      <!-- 12:00am block -->
+      <div class="row">
+        <div class="col hour">
+          12:00 am
+        </div>
+        <div class="col-8 description border border-dark">
+          (Event inputed by user)
+        </div>
+        <div class="col border border-dark">
+          (save button here)
+        </div>
+      </div>
+
+      <!-- 1:00pm block -->
+      <div class="row">
+        <div class="col hour">
+          1:00 pm
+        </div>
+        <div class="col-8 description border border-dark">
+          (Event inputed by user)
+        </div>
+        <div class="col border border-dark">
+          (save button here)
+        </div>
+      </div>
+
+      <!-- 2:00pm block -->
+      <div class="row">
+        <div class="col hour">
+          2:00 pm
+        </div>
+        <div class="col-8 description border border-dark">
+          (Event inputed by user)
+        </div>
+        <div class="col border border-dark">
+          (save button here)
+        </div>
+      </div>
+
+      <!-- 3:00pm block -->
+      <div class="row">
+        <div class="col hour">
+          3:00 pm
+        </div>
+        <div class="col-8 description border border-dark">
+          (Event inputed by user)
+        </div>
+        <div class="col border border-dark">
+          (save button here)
+        </div>
+      </div>
+
+      <!-- 4:00pm block -->
+      <div class="row">
+        <div class="col hour">
+          4:00 pm
+        </div>
+        <div class="col-8 description border border-dark">
+          (Event inputed by user)
+        </div>
+        <div class="col border border-dark">
+          (save button here)
+        </div>
+      </div>
+
+      <!-- 5:00pm block -->
+      <div class="row">
+        <div class="col hour">
+          5:00 pm
+        </div>
+        <div class="col-8 description border border-dark">
+          (Event inputed by user)
+        </div>
+        <div class="col border border-dark">
+          (save button here)
+        </div>
+      </div>
+
     </div>
 
     <!-- JQuery and Moment.js dependecy -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
+
+    
+    <script>
+      //displays real time
+      $('#currentDay').attr('class', 'time');
+      var timerInterval = setInterval(function() {
+      var currentDate = moment().format("MMMM Do, YYYY");
+      var currentTime = moment().format(" hh:mm:ss");
+      $('#currentDay').text(currentDate + currentTime);
+      }, 1000)
+    </script>
   </body>
 </html>
