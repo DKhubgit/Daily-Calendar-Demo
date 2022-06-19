@@ -81,6 +81,9 @@ textarea{
   color: white;
   cursor: pointer;
 }
+.saveBtn:hover {
+  background-color: #027c97;
+}
 
 .saveBtn i:hover {
   font-size: 20px;

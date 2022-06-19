@@ -29,7 +29,8 @@
       <h1 class="display-3 text-center">Work Day Scheduler</h1>
       <p class="lead text-center">A simple calendar app for scheduling your work day</p>
       <p id="currentDay" class="lead"></p>
-      <p>How to use: Add an event and click save</p>
+      <p>How to use: Type an event and click save</p>
+      <p>--History--</p>
     </header>
     
     <div class="container">
@@ -174,8 +175,6 @@
 
         // initializes the array with empty strings, this way we can have indices to access
         for (var p = 0; p < $(".container").children().length; ++p) {
-          // var currentRow = $(".container").children().eq(p);
-          // var rowText = currentRow.children().eq(1).val();
           userEvents.push("");
         }
       } else {
@@ -191,8 +190,16 @@
       $(".saveBtn").on('click', function() {
         var secondSibling = $(this).prev()
         var firstSibling = secondSibling.prev()
-        userEvents[(firstSibling.data('currhour')) - 9] = $(this).prev().val();
+        //displays in the header that Event was saved, 
+        //but checks for empty inputs or new line inputs first
+        if (secondSibling.val() !== "") {
+          if (!(secondSibling.val().includes("\n"))) {
+            $('header').append('<p>' + firstSibling.text() + 'New Event saved!')
+          }
+        }
+        userEvents[(firstSibling.data('currhour')) - 9] = secondSibling.val();
         localStorage.setItem("Events", JSON.stringify(userEvents))
+        console.log(userEvents);
       })
 
     </script>
