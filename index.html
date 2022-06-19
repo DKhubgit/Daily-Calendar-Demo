@@ -38,9 +38,7 @@
         <div class="col hour" data-currhour="9">
           9:00 am
         </div>
-        <div class="col-8 description border border-dark">
-          (Event inputed by user)
-        </div>
+        <textarea class="col-8 textarea description"></textarea>
         <div class="col border border-dark">
           (save button here)
         </div>
@@ -50,9 +48,7 @@
         <div class="col hour" data-currhour="10">
           10:00 am
         </div>
-        <div class="col-8 description border border-dark">
-          (Event inputed by user)
-        </div>
+        <textarea class="col-8 textarea description"></textarea>
         <div class="col border border-dark">
           (save button here)
         </div>
@@ -62,9 +58,7 @@
         <div class="col hour" data-currhour="11">
           11:00 am
         </div>
-        <div class="col-8 description border border-dark">
-          (Event inputed by user)
-        </div>
+        <textarea class="col-8 textarea description"></textarea>
         <div class="col border border-dark">
           (save button here)
         </div>
@@ -74,9 +68,7 @@
         <div class="col hour" data-currhour="12">
           12:00 am
         </div>
-        <div class="col-8 description border border-dark">
-          (Event inputed by user)
-        </div>
+        <textarea class="col-8 textarea description"></textarea>
         <div class="col border border-dark">
           (save button here)
         </div>
@@ -87,9 +79,7 @@
         <div class="col hour" data-currhour="13">
           1:00 pm
         </div>
-        <div class="col-8 description border border-dark">
-          (Event inputed by user)
-        </div>
+        <textarea class="col-8 textarea description"></textarea>
         <div class="col border border-dark">
           (save button here)
         </div>
@@ -100,9 +90,7 @@
         <div class="col hour" data-currhour="14">
           2:00 pm
         </div>
-        <div class="col-8 description border border-dark">
-          (Event inputed by user)
-        </div>
+        <textarea class="col-8 textarea description"></textarea>
         <div class="col border border-dark">
           (save button here)
         </div>
@@ -113,9 +101,7 @@
         <div class="col hour" data-currhour="15">
           3:00 pm
         </div>
-        <div class="col-8 description border border-dark">
-          (Event inputed by user)
-        </div>
+        <textarea class="col-8 textarea description"></textarea>
         <div class="col border border-dark">
           (save button here)
         </div>
@@ -126,9 +112,7 @@
         <div class="col hour" data-currhour="16">
           4:00 pm
         </div>
-        <div class="col-8 description border border-dark">
-          (Event inputed by user)
-        </div>
+        <textarea class="col-8 textarea description"></textarea>
         <div class="col border border-dark">
           (save button here)
         </div>
@@ -139,9 +123,7 @@
         <div class="col hour" data-currhour="17">
           5:00 pm
         </div>
-        <div class="col-8 description border border-dark">
-          (Event inputed by user)
-        </div>
+        <textarea class="col-8 textarea description"></textarea>
         <div class="col border border-dark">
           (save button here)
         </div>
@@ -149,7 +131,7 @@
 
     </div>
 
-    <!-- JQuery and Moment.js dependecy -->
+    <!-- JQuery and Moment.js dependency -->
     <script src="https://code.jquery.com/jquery-3.4.1.min.js"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/moment.js/2.24.0/moment.min.js"></script>
 
@@ -157,10 +139,9 @@
     <script>
       //displays date and real time in 24hour format
       $('#currentDay').attr('class', 'time');
-      var currentTime;
       var timerInterval = setInterval(function() {
       var currentDate = moment().format("MMMM Do, YYYY");
-      currentTime = moment().format(" HH:mm:ss");
+      var currentTime = moment().format(" HH:mm:ss");
       $('#currentDay').text(currentDate + currentTime);
       }, 1000)
 
@@ -168,15 +149,18 @@
       //must refresh in order to update colors
       for (var i = 0; i < $(".container").children().length; ++i){
         var checkTime = moment().format("HH");
-        var thisHour = $(".container").children().eq(i).children().eq(0).data('currhour');
-        if ( checkTime > thisHour) {
-          $(".container").children().eq(i).children().eq(1).addClass('past');
-        } else if (checkTime == thisHour) {
-          $(".container").children().eq(i).children().eq(1).addClass('present');
+        var currentRow = $(".container").children().eq(i);
+        var rowHour = currentRow.children().eq(0).data('currhour');
+        if ( checkTime > rowHour) {
+          currentRow.children().eq(1).addClass('past');
+        } else if (checkTime == rowHour) {
+          currentRow.children().eq(1).addClass('present');
         } else {
-          $(".container").children().eq(i).children().eq(1).addClass('future');
+          currentRow.children().eq(1).addClass('future');
         }
       }
+
+      //user input for an event
 
     </script>
   </body>
