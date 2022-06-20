@@ -126,7 +126,7 @@
         <div class="col hour" data-currhour="17">
           5:00 pm
         </div>
-        <textarea class="col-8 description" name="userEvent"></textarea>
+        <textarea class="col-8 description" name="userEvent" rows="1"></textarea>
         <div class="col border border-dark saveBtn">
           <i>SAVE</i>
         </div>
@@ -190,16 +190,9 @@
       $(".saveBtn").on('click', function() {
         var secondSibling = $(this).prev()
         var firstSibling = secondSibling.prev()
-        //displays in the header that Event was saved, 
-        //but checks for empty inputs or new line inputs first
-        if (secondSibling.val() !== "") {
-          if (!(secondSibling.val().includes("\n"))) {
-            $('header').append('<p>' + firstSibling.text() + 'New Event saved!')
-          }
-        }
+        
         userEvents[(firstSibling.data('currhour')) - 9] = secondSibling.val();
         localStorage.setItem("Events", JSON.stringify(userEvents))
-        console.log(userEvents);
       })
 
     </script>
